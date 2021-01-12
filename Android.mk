@@ -7,7 +7,9 @@ QMAA_DISABLES_WFD := true
 endif #TARGET_USES_QMAA_OVERRIDE_WFD
 endif #TARGET_USES_QMAA
 
-WFD_DISABLE_PLATFORM_LIST := neo
+WFD_DISABLE_PLATFORM_LIST := neo anorak
+
+ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 
 #Disable WFD for selected 32-bit targets
 ifeq ($(call is-board-platform,bengal),true)
@@ -23,3 +25,5 @@ include $(call all-makefiles-under, $(LOCAL_PATH))
 endif #QMAA_DISABLES_WFD
 endif #TARGET_HAS_LOW_RAM
 endif #WFD_DISABLE_PLATFORM_LIST
+
+endif
